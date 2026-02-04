@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBox Koran - SnapManner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Old+Standard+TT:wght@400;700&family=Special+Elite&family=UnifrakturMaguntia&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Camera Section -->
+        <div id="camera-section" class="section active">
+            <h1 class="main-title">PhotoBox Koran</h1>
+            <p class="subtitle">Ambil 3 foto untuk membuat koran unikmu</p>
+            
+            <div class="camera-container">
+                <video id="camera" autoplay playsinline></video>
+                <canvas id="capture-canvas" style="display: none;"></canvas>
+                <div class="camera-overlay">
+                    <div class="live-indicator">
+                        <span class="live-dot"></span>
+                        LIVE
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-counter">
+                <span id="photo-count">0</span> / 3 Foto
+            </div>
+
+            <div class="photo-thumbnails">
+                <div class="thumbnail" id="thumb-1">
+                    <span class="thumb-number">1</span>
+                    <img src="" alt="">
+                </div>
+                <div class="thumbnail" id="thumb-2">
+                    <span class="thumb-number">2</span>
+                    <img src="" alt="">
+                </div>
+                <div class="thumbnail" id="thumb-3">
+                    <span class="thumb-number">3</span>
+                    <img src="" alt="">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="capture-btn" class="btn capture-btn">
+                    <span class="capture-icon"></span>
+                </button>
+            </div>
+
+            <div class="input-section">
+                <label for="headline-input">Judul Headline:</label>
+                <input type="text" id="headline-input" placeholder="Contoh: MALIOBORO" maxlength="20">
+                
+                <label for="subheadline-input">Sub Headline:</label>
+                <input type="text" id="subheadline-input" placeholder="Contoh: A Timeless Journey Through Yogyakarta's Heart" maxlength="80">
+                
+                <label for="location-input">Lokasi/Kategori:</label>
+                <input type="text" id="location-input" placeholder="Contoh: PLACE TO GO" maxlength="20">
+            </div>
+
+            <button id="generate-btn" class="btn generate-btn" disabled>
+                Cetak Koran
+            </button>
+
+            <button id="reset-btn" class="btn reset-btn">
+                Reset Semua
+            </button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result-section" class="section">
+            <h2>Hasil Koranmu</h2>
+            
+            <div class="result-layout">
+                <!-- Main Newspaper with Live Photos -->
+                <div class="newspaper-wrapper">
+                    <div id="newspaper" class="newspaper">
+                        <!-- Header -->
+                        <div class="newspaper-header">
+                            <div class="header-left">Breaking<br>News</div>
+                            <div class="header-center">SnapManner</div>
+                            <div class="header-right">Special<br>Edition</div>
+                        </div>
+
+                        <!-- Sub Header -->
+                        <div class="newspaper-subheader">
+                            <span class="vol">Vol.01, NO. 2</span>
+                            <span class="star">*</span>
+                            <span id="category-display" class="category">PLACE TO GO</span>
+                            <span class="star">*</span>
+                            <span id="date-display" class="date">01 December 2004</span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 id="main-headline" class="headline">MALIOBORO</h1>
+
+                        <!-- Main Photo -->
+                        <div class="main-photo-container">
+                            <img id="main-photo" src="" alt="Main Photo">
+                        </div>
+
+                        <!-- Article Section -->
+                        <div class="article-section">
+                            <!-- Left Column -->
+                            <div class="article-left">
+                                <h3 id="sub-headline" class="sub-headline">Malioboro: A Timeless Journey Through Yogyakarta's Heart</h3>
+                                <div class="small-photo-container">
+                                    <img id="photo-2" src="" alt="Photo 2">
+                                </div>
+                                <div class="cta-box">DON'T MISS OUT & STAY UPDATE</div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="article-right">
+                                <!-- Two small stamp photos -->
+                                <div class="stamp-photos-row">
+                                    <div class="stamp-photo">
+                                        <div class="stamp-border">
+                                            <img id="photo-3" src="" alt="Photo 3">
+                                        </div>
+                                        <p class="stamp-caption">MALIOBORO'S HEARTBEAT: A STREET FULL OF LIFE AND TRADITION</p>
+                                    </div>
+                                    <div class="stamp-photo">
+                                        <div class="stamp-border">
+                                            <img id="photo-3-alt" src="" alt="Photo 3 Alt">
+                                        </div>
+                                        <p class="stamp-caption">YOGYAKARTA'S ICONIC TUGU AND THE TIMELESS CHARM</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Two column article text -->
+                                <div class="article-columns">
+                                    <div class="article-col">
+                                        <p>Malioboro today is a vibrant, iconic destination and a sensory feast. The street is constantly alive, day and night, with the aroma of local food, the sound of gamelan music, and the chatter of vendors. Visitors can find everything from batik, silver jewelry, and traditional snacks, with dokar (horse-drawn carriages) and becak (pedicabs) adding to its unique charm. Historically, Malioboro also witnessed major events, serving as a crucial battleground and a symbol of national resistance during the Indonesian struggle for independence.</p>
+                                    </div>
+                                    <div class="article-col">
+                                        <p>The iconic <strong>Tugu Pal Putih</strong> (Yogyakarta Monument), located at the northern end of Malioboro, stands as a grand symbol of the city. This monument, built by Hamengkubuwono I, is another integral part of the philosophical axis, representing the unity of God and man.</p>
+                                        <p>Malioboro is more than just a street; it is the beating heart of Yogyakarta, a place where history, culture, and modernity converge, offering an unforgettable experience to all who wander its bustling pathways.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Line -->
+                        <div class="newspaper-footer-line"></div>
+                        <p class="newspaper-footer-text">Sugeng rawuh ing Ngayogyakarta Hadiningrat</p>
+                    </div>
+                </div>
+
+                <!-- Frame Preview Panel -->
+                <div class="frame-preview-panel">
+                    <h4>Preview Frame</h4>
+                    <p class="preview-hint">Foto yang akan di-download</p>
+                    <div class="frame-previews">
+                        <div class="frame-preview-item">
+                            <span>Foto 1</span>
+                            <img id="preview-frame-1" src="" alt="Frame 1">
+                        </div>
+                        <div class="frame-preview-item">
+                            <span>Foto 2</span>
+                            <img id="preview-frame-2" src="" alt="Frame 2">
+                        </div>
+                        <div class="frame-preview-item">
+                            <span>Foto 3</span>
+                            <img id="preview-frame-3" src="" alt="Frame 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-controls">
+                <button id="download-btn" class="btn download-btn">
+                    Download Gambar
+                </button>
+                <button id="download-video-btn" class="btn download-video-btn">
+                    Download Video Live
+                </button>
+                <button id="back-btn" class="btn back-btn">
+                    Ambil Foto Lagi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Recording Canvas -->
+    <canvas id="video-canvas" style="display: none;"></canvas>
+
+    <!-- Flash Effect -->
+    <div id="flash" class="flash"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
