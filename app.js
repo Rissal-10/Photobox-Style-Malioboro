@@ -132,7 +132,7 @@ function setCurrentDate() {
 
 // Setup Event Listeners
 function setupEventListeners() {
-    captureBtn.addEventListener('click', capturePhoto);
+    captureBtn.addEventListener('click', startTimer);
     generateBtn.addEventListener('click', generateNewspaper);
     resetBtn.addEventListener('click', resetAll);
     downloadBtn.addEventListener('click', downloadNewspaper);
@@ -143,6 +143,49 @@ function setupEventListeners() {
     headlineInput.addEventListener('input', updateGenerateButton);
     subheadlineInput.addEventListener('input', updateGenerateButton);
     locationInput.addEventListener('input', updateGenerateButton);
+}
+
+// Timer state
+let isTimerRunning = false;
+
+// Start Timer Countdown
+function startTimer() {
+    if (photos.length >= 3) {
+        alert('Sudah mencapai 3 foto!');
+        return;
+    }
+    
+    if (isTimerRunning) {
+        return;
+    }
+    
+    // Check if we have enough frames in buffer
+    if (frameBuffer.length < 5) {
+        alert('Mohon tunggu sebentar, kamera sedang mempersiapkan Live Photo...');
+        return;
+    }
+    
+    isTimerRunning = true;
+    const timerOverlay = document.getElementById('timer-overlay');
+    const timerCount = timerOverlay.querySelector('.timer-count');
+    let countdown = 5;
+    
+    timerOverlay.classList.add('active');
+    timerCount.textContent = countdown;
+    captureBtn.disabled = true;
+    
+    const timerInterval = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+            timerCount.textContent = countdown;
+        } else {
+            clearInterval(timerInterval);
+            timerOverlay.classList.remove('active');
+            captureBtn.disabled = false;
+            isTimerRunning = false;
+            capturePhoto();
+        }
+    }, 1000);
 }
 
 // Capture Photo

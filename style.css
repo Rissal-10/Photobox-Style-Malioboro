@@ -401,6 +401,39 @@ body::before {
     100% { opacity: 0; }
 }
 
+/* Timer Countdown Overlay */
+.timer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+}
+
+.timer-overlay.active {
+    display: flex;
+}
+
+.timer-count {
+    font-size: 150px;
+    font-weight: 900;
+    color: #d4af37;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5);
+    font-family: 'Playfair Display', serif;
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 /* ============ NEWSPAPER STYLES ============ */
 .newspaper-wrapper {
     overflow-x: auto;
